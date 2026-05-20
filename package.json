@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "tsx watch src/server.ts"
   },
-  "keywords": ["typescript", "node", "prisma", "api"],
+  "keywords": [
+    "typescript",
+    "node",
+    "prisma",
+    "api"
+  ],
   "author": "Denny Paulista Azevedo Filho",
   "license": "MIT",
   "type": "commonjs",
@@ -22,6 +27,7 @@
     "typescript": "^6.0.3"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
     "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.2",
     "cors": "^2.8.6",
