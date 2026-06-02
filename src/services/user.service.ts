@@ -7,6 +7,11 @@ type CreateUserProps = {
 	password: string;
 }
 
+type VerifyUserProps = {
+	email: string;
+	password: string;
+}
+
 export const createUser = async ({ name, email, password }: CreateUserProps) => {
 	email = email.toLowerCase()
 
@@ -24,4 +29,18 @@ export const createUser = async ({ name, email, password }: CreateUserProps) => 
 			password: passwordHash
 		}
 	})
+}
+
+export const verifyUser = async ({ email, password }: VerifyUserProps) => {
+	email = email.toLowerCase()
+
+	const user = await prisma.user.findFirst({
+		where: { email }
+	})
+	if (!user) return false
+
+	const isMatch = await bcrypt.compareSync(password, user.password)
+	if (!isMatch) return false
+
+	return user
 }
